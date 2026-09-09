@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KhananAI-Login</title>
+</head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<body>
+<header class="headerbar">
+    <div Class="logo">KHANANAI<span>AI</span></div>
+</header>
+<!--outer background container-->
+<div class="main-container">
+    <div class="login-card">
+        <div class="left-panel">
+            <div class="tab-container">
+                <button class="role-tab_active" id="usertab" onclick="selectRole('USER')">USER</button>
+                <button class="role-tab" id="adminTab" onclick="selectRole('ADMIN')">ADMIN</button>
+            </div>
+        </div>
+<!--RIGHT SIDE : WHITE LOGIN FORM BOX-->>
+<div class="right-panel">
+    <div class="form-box">
+        <h1 class="title">LOGIN</h1>
+        <form action="#">
+            <div class="input-grp">
+                <label for="username">Username</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="input-grp">
+                <label for="password">Password</label>
+                <input type="password" id="password">
+            </div>
+            <button  type='submit' class="login" >Log-In</button>
+        </form>
+        <p class="signup-text">
+            Don't have an account?<a href="#">New User</a>
+        </p>
+    </div>
+</div>
+</div>
+</div>
+<script>
+    let selectedRole = 'USER';
+
+    function selectRole(role) {
+        selectedRole = role;
+        document.getElementById("usertab").classList.toggle('active',role=='USER')
+        document.getElementById('adminTab').classList.toggle('active', role === 'ADMIN');
+    }
+    function handleLogin(event) {
+      event.preventDefault();
+      const username = document.getElementById('username').value;
+      alert(`Logging in as ${selectedRole} with username: ${username}`);
+    }
+</script>
+</body>
+</html>
