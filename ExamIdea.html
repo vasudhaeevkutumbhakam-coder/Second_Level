@@ -3,88 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Away from home</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Style4.css">
+    <title>KhananAI-Login</title>
 </head>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <body>
-
-    <!-- Header Navigation -->
-    <div class="header">
-        <img src="logo.jpeg" alt="Logo">
-        <header>KHANAN<span>AI</span></header>
-    </div>
-
-    <!-- Main Sliding Login/Signup Container -->
-    <div class="container" id="container">
-        
-        <!-- CREATE ACCOUNT FORM (Sign Up) -->
-        <div class="form-container sign-up-container">
-            <form action="#">
-                <h1>Create Account</h1>
-                <span>Send request for registration</span>
-                <input type="text" placeholder="Name" />
-                <input type="text" placeholder="Your Post">
-                <input type="email" placeholder="Email" />
-                <button type="button">Send Request</button>
-            </form>
-        </div>
-
-        <!-- LOGIN FORM (Sign In) -->
-        <div class="form-container sign-in-container">
-            <form action="#">
-                <h1>Login</h1>
-                <span>or use your account</span>
-                <input type="email" placeholder="UserID/email" />
-                <input type="password" placeholder="Password" />
-                <a href="#" style="font-size: 12px; margin: 10px 0; color: #333; text-decoration: none;">Forgot your password?</a>
-                <button type="button">Sign In</button>
-            </form>
-        </div>
-
-        <!-- OVERLAY SLIDER -->
-        <div class="overlay-container">
-            <div class="overlay">
-                
-                <!-- LEFT OVERLAY (Shown when Sign Up form is active) -->
-                <div class="overlay-panel overlay-left">
-                    <h1>Khanan<span>AI</span></h1>
-                    <h2>Welcome Back!</h2>
-                    <p style="margin: 15px 0; font-size: 14px;">To keep connected with us please login with your personal info</p>
-                    <button class="ghost" id="signIn">Login</button>
-                </div>
-
-                <!-- RIGHT OVERLAY (Shown when Sign In form is active) -->
-                <div class="overlay-panel overlay-right">
-                    <h1>Khanan<span>AI</span></h1>
-                    <h2>Hello, Friend!</h2>
-                    <p style="margin: 15px 0; font-size: 14px;">Enter your personal details and start journey with us</p>
-                    <button class="ghost" id="signUp">Sign Up</button>
-                </div>
-
+<header class="headerbar">
+    <div Class="logo">KHANANAI<span>AI</span></div>
+</header>
+<!--outer background container-->
+<div class="main-container">
+    <div class="login-card">
+        <div class="left-panel">
+            <div class="tab-container">
+                <button class="role-tab_active" id="usertab" onclick="selectRole('USER')">USER</button>
+                <button class="role-tab" id="adminTab" onclick="selectRole('ADMIN')">ADMIN</button>
             </div>
         </div>
-
+<!--RIGHT SIDE : WHITE LOGIN FORM BOX-->>
+<div class="right-panel">
+    <div class="form-box">
+        <h1 class="title">LOGIN</h1>
+        <form action="#">
+            <div class="input-grp">
+                <label for="username">Username</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="input-grp">
+                <label for="password">Password</label>
+                <input type="password" id="password">
+            </div>
+            <button  type='submit' class="login" >Log-In</button>
+        </form>
+        <p class="signup-text">
+            Don't have an account?<a href="#">New User</a>
+        </p>
     </div>
+</div>
+</div>
+</div>
+<script>
+    let selectedRole = 'USER';
 
-    <script>
-        const signUpButton = document.getElementById('signUp');
-        const signInButton = document.getElementById('signIn');
-        const container = document.getElementById('container');
-
-        signUpButton.addEventListener('click', () => {
-            container.classList.add("right-panel-active");
-        });
-
-        signInButton.addEventListener('click', () => {
-            container.classList.remove("right-panel-active");
-        });
-    </script>
+    function selectRole(role) {
+        selectedRole = role;
+        document.getElementById("usertab").classList.toggle('active',role=='USER')
+        document.getElementById('adminTab').classList.toggle('active', role === 'ADMIN');
+    }
+    function handleLogin(event) {
+      event.preventDefault();
+      const username = document.getElementById('username').value;
+      alert(`Logging in as ${selectedRole} with username: ${username}`);
+    }
+</script>
 </body>
 </html>

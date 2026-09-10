@@ -1,242 +1,88 @@
-* {
+*{
     box-sizing: border-box;
-    margin: 0;
+    margin:0;
     padding: 0;
-}
-
-
-body {
-    background-image: url('https://wallpaperaccess.com/full/2816905.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-/* Header Styles */
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    padding: 10px 20px;
-    background-color: rgba(27, 27, 27, 0.869);
-    color: rgb(243, 137, 31);
-    font-size: 35px;
     font-family: 'Noto Serif', Times, serif;
-    display: flex;
-    align-items: center;
-    z-index: 1000;
+    color: rgb(4, 2, 0);
 }
-
-.header img {
-    height: 45px;
-    margin-right: 15px;
+body{
+    background-color: #fbecdb;
+    min-height: 100vh;
+    display:flex;
+    flex-direction:column;
 }
-
-header span {
-    border: 2px solid rgba(240, 248, 255, 0.781);
-    background-color: rgba(233, 231, 231, 0.782);
-    border-radius: 6px;
-    color: black;
-    font-size: 28px;
-    padding: 0 6px;
-    margin-left: 4px;
+.header-bar {
+  background-color: #eadab6;
+  padding: 15px 40px;
+  border-bottom: 2px solid #fbfbf9;
 }
-
-/* Outer Card Container */
-.container {
-    background-color: #ffffffd7;
-    border-radius: 10px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    position: relative;
-    overflow: hidden;
-    width: 768px;
-    max-width: 100%;
-    min-height: 480px;
-    margin-top: 70px; /* Leaves space for top header */
+.logo {
+  font-size: 28px;
+  font-weight: 800;
+  color: #251200;
+  letter-spacing: 2px;
 }
-
-.form-container {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    transition: all 0.6s ease-in-out;
+.logo span {
+  background-color: #263950;
+  color: #ffffff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 4px;
 }
-
-form {
-    background-color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 50px;
-    height: 100%;
-    text-align: center;
+.main-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
-
-span {
-    font-size: 12px;
-    color: #666;
-    margin-bottom: 15px;
+.login-card {
+  width: 850px;
+  height: 500px;
+  display: flex;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
-h1 span{
-    font-size: 28px;
-    color: #423f3f;
-    margin-bottom: 15px;
+.left-panel {
+  width: 40%;
+  background:none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
 }
-
-
-input {
-    background-color: #eee;
-    border: none;
-    padding: 12px 15px;
-    margin: 8px 0;
-    width: 100%;
-    border-radius: 5px;
-    outline: none;
+.tabs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  align-items: flex-end;
+  padding-right: 0;
 }
-
-h1 {
-    margin-bottom: 15px;
-    color:#ffa02b
+.role-tab {
+  width: 120px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px 0 0 25px;
+  background-color: #ffffff;
+  color: #8c3e21;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: -2px 2px 5px rgba(0,0,0,0.2);
 }
-
-h2 {
-    color: #ffffff;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-button {
-    border-radius: 20px;
-    border: 1px solid #ffa02b;
-    background-color: #ff952b;
-    color: #ffffff;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 12px 45px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: transform 80ms ease-in;
-    cursor: pointer;
-    margin-top: 15px;
-}
-
-button:active {
-    transform: scale(0.95);
-}
-
-button.ghost {
-    background-color: transparent;
-    border-color: #ffffff;
-}
-
-/* Sign In Form (Left side by default) */
-.sign-in-container {
-    left: 0;
-    width: 50%;
-    z-index: 2;
-}
-
-/* Sign Up Form (Behind Sign In initially) */
-.sign-up-container {
-    left: 0;
-    width: 50%;
-    opacity: 0;
-    z-index: 1;
-}
-
-/* --- ANIMATION LOGIC FOR FORMS --- */
-.container.right-panel-active .sign-in-container {
-    transform: translateX(100%);
-}
-
-.container.right-panel-active .sign-up-container {
-    transform: translateX(100%);
-    opacity: 1;
-    z-index: 5;
-    animation: show 0.6s;
-}
-
-@keyframes show {
-    0%, 49.99% {
-        opacity: 0;
-        z-index: 1;
-    }
-    50%, 100% {
-        opacity: 1;
-        z-index: 5;
-    }
-}
-
-/* --- OVERLAY PANEL SLIDER --- */
-.overlay-container {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-    transition: transform 0.6s ease-in-out;
-    z-index: 100;
-}
-
-.container.right-panel-active .overlay-container {
-    transform: translateX(-100%);
-}
-
-.overlay {
-    background: #200000e4;
-    background: linear-gradient(to left, #422900, #010100e2);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 0 0;
-    color: #ffffff;
-    position: relative;
-    left: -100%;
-    height: 100%;
-    width: 200%;
-    transform: translateX(0);
-    transition: transform 0.6s ease-in-out;
-}
-
-.container.right-panel-active .overlay {
-    transform: translateX(50%);
-}
-
-.overlay-panel {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 40px;
-    text-align: center;
-    top: 0;
-    height: 100%;
-    width: 50%;
-    transform: translateX(0);
-    transition: transform 0.6s ease-in-out;
-}
-
-.overlay-left {
-    transform: translateX(-20%);
-}
-
-.container.right-panel-active .overlay-left {
-    transform: translateX(0);
-}
-
-.overlay-right {
-    right: 0;
-    transform: translateX(0);
-}
-
-.container.right-panel-active .overlay-right {
-    transform: translateX(20%);
+.role-tab_active {
+ width: 120px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px 0 0 25px;
+  background-color: #ffffff;
+  position:relative ;
+  color: #8c3e21;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: -2px 2px 5px rgba(0,0,0,0.2);
 }
